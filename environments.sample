@@ -26,6 +26,6 @@ environments:
            cpu: 500m
            memory: 100Mi
         volumes:
-           name: ca-internal
-           path: /data/bundle
-           type: secret
+           - name: ca-internal
+             path: /data/bundle
+             type: secret
