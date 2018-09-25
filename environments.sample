@@ -25,7 +25,7 @@ environments:
         env:
           - name: APP_PORT
             value: 80
-          - secret: JKS-PASS
+          - secret: JKS_PASS
             value: ca-internal/keystore-password
         limits:
            cpu: 500m
