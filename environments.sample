@@ -9,7 +9,7 @@ environments:
         port: 80
         annotations:
           - name: pod.beta.kubernetes.io/init-containers
-            value: "[{\"name\": \"init-myservice\",\"image\": \"busybox\",\"command\": [\"sh\", \"-c\", \"until nslookup google.com; do echo waiting for google.com; sleep 240; done;\"]}]"
+            value: "[{\"name\": \"init-myservice\",\"image\": \"busybox\",\"command\": [\"sh\", \"-c\", \"echo sleeping for 240 seconds; sleep 240;\"]}]"
         env:
           - name: APP_PORT
             value: 80
