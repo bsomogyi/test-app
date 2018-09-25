@@ -18,11 +18,7 @@ environments:
                  ls -lrt /data/bundle\n
                  sleep 240\n
               "],
-              "volumeMounts": [{
-                "name": "ca-internal",
-                "mountPath": "/data/bundle"
-              }],
-            }]'
+           }]'
         volumes:
           - name: ca-internal
             path: /data/bundle
