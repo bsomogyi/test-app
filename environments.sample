@@ -5,21 +5,17 @@ environments:
     deployment:
       method: rolling-upgrade
     services:
-      - name: front
-        external_url: front.sample-app.domain
-        ssl: false
-        port: 80
-        env:
-          - name: APP_PORT
-            value: 80
-          - name: BACK_END
-            value: back.sample-app.svc.cluster.local
-        limits:
-           cpu: 500m
-           memory: 100Mi
       - name: back
         port: 80
         annotations:
           - name: pod.beta.kubernetes.io/init-containers
-            value: "[ { name: init-myservice image: busybox command: [\"sh\", \"-c\", \"until nslookup myservice; do echo waiting for myservice; sleep 2; done;\"] volumeMounts: - name\": ca-internal mountPath: \"/data/bundle\" readOnly: true volumes: - name: ca-internal secret: secretName: ca-internal } ]"
-  
+            value: "[{\"name\": \"init-myservice\",\"image\": \"busybox\",\"command\": [\"sh\", \"-c\", \"until nslookup google.com; do echo waiting for google.com; sleep 240; done;\"]}]"
+        env:
+          - name: APP_PORT
+            value: 80
+          - secret: JKS_PASS
+            value: ca-internal/keystore-password
+        volumes:
+          - name: ca-internal
+            path: /data/bundle
+            type: secret
