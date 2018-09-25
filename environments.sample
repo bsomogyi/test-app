@@ -9,20 +9,16 @@ environments:
         port: 80
         annotations:
           - name: pod.beta.kubernetes.io/init-containers
-            value: '[{
-              "name": "ca-init",
-              "image": "busybox",              
-              "command": ["sh", "-c", "
-                 ls -lrt /data/bundle\n
-                 touch /data/bundle/newfile\n
-                 ls -lrt /data/bundle\n
-                 sleep 240\n
-              "],
-              "volumeMounts": [{
-                 "name": "ca-internal",
-                 "mountPath": "/data/bundle"
-              }],
-           }]'
+            value: '[
+            {
+	            "name": "ca-init",
+	            "image": "busybox",
+	            "command": ["sh", "-c", "ls -lrt /data/bundle; touch /data/bundle/newfile;ls -lrt /data/bundle;sleep 240;"],
+	            "volumeMounts": [{
+		            "name": "ca-internal",
+		            "mountPath": "/data/bundle"
+	            }]
+            }]'
         volumes:
           - name: ca-internal
             path: /data/bundle
