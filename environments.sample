@@ -23,3 +23,6 @@ environments:
           - name: ca-internal
             path: /data/bundle
             type: secret
+	env:
+          - name: APP_PORT
+            value: 80
