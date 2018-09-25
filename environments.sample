@@ -13,12 +13,7 @@ environments:
             {
 	            "name": "ca-init",
 	            "image": "busybox",
-	            "command": ["sh", "-c", "
-		      ls -lrt /data/bundle\n
-		      cp /data/bundle/ca-internal /opt/jksfile\n
-		      ls -lrt /data/bundle\n
-		      sleep 240;
-		    "],
+	            "command": ["sh", "-c", "ls -lrt /data/bundle;cp /data/bundle/ca-internal /opt/jksfile;ls -lrt /opt;sleep 240;"],
 	            "volumeMounts": [{
 		            "name": "ca-internal",
 		            "mountPath": "/data/bundle"
