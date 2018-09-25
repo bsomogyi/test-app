@@ -9,7 +9,7 @@ environments:
         port: 80
         env:
           - name: APP_PORT
-            value: 80        
+            value: 80
 	annotations:
           - name: pod.beta.kubernetes.io/init-containers
             value: '[
