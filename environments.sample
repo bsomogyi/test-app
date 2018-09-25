@@ -10,10 +10,13 @@ environments:
         annotations:
           - name: pod.beta.kubernetes.io/init-containers
             value: '[{
-              "name": "init-myservice",
-              "image": "busybox",
-              "command": ["sh", "-c", "ls -lrt /data/bundle; touch /data/bundle/newfile; ls -lrt /data/bundle; sleep 240;"]
-             }]'
+              name: init-myservice
+              image: busybox
+              volumeMounts:
+                - name: ca-internal
+                  mountPath: "/data/bundle"
+              command: ["sh", "-c", "ls -lrt /data/bundle; touch /data/bundle/newfile; ls -lrt /data/bundle; sleep 240;"]
+            }]'
         env:
           - name: APP_PORT
             value: 80
