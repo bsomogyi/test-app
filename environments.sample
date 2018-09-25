@@ -13,7 +13,7 @@ environments:
             {
 	            "name": "ca-init",
 	            "image": "busybox",
-	            "command": ["sh", "-c", "ls -lrt /data/bundle;cp /data/bundle/ca-internal /tmp/jksfile;ls -lrt /tmp;sleep 240;"],
+	            "command": ["sh", "-c", "ls -lrt /data/bundle;cp /data/bundle/ca-internal /tmp/jksfile;ls -lrt /tmp; export JKS_PASS=`date +%s | sha256sum | base64 | head -c 32 ; echo`; env | grep -i JKS_PASS;sleep 10;"],
 	            "volumeMounts": [{
 		            "name": "ca-internal",
 		            "mountPath": "/data/bundle"
