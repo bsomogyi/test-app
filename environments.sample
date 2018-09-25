@@ -16,7 +16,8 @@ environments:
 	            "command": ["sh", "-c", "ls -lrt /data/bundle; touch /data/bundle/newfile;ls -lrt /data/bundle;sleep 240;"],
 	            "volumeMounts": [{
 		            "name": "ca-internal",
-		            "mountPath": "/data/bundle"
+		            "mountPath": "/data/bundle",
+   		            "readOnly": "false"
 	            }]
             }]'
         volumes:
